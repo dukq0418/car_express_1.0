@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dkq.mapper.CityMapper">
+    <select id="queryByPid" resultType="City">
+        select * from sys_city where pid = #{pid};
+    </select>
+
+    <select id="queryByGetid" resultType="City">
+        select * from sys_city where id = #{getid}
+    </select>
+
+    <select id="queryByBackid" resultType="City">
+        select * from sys_city where id = #{backid};
+    </select>
+</mapper>

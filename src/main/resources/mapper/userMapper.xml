@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dkq.mapper.UserMapper">
+    <select id="queryByUser" resultType="User">
+        select * from carexpress.sys_user where tel=#{tel} and password=#{password}
+    </select>
+
+    <select id="denglu" resultType="User">
+        select * from sys_user WHERE id = #{uid};
+    </select>
+
+    <insert id="register" parameterType="User">
+        insert into sys_user (tel, password, email, invitation)
+        values
+        (#{tel},#{password},#{email},#{invitation});
+    </insert>
+
+    <update id="update" parameterType="User">
+        update sys_user
+        set
+        <if test="password != null and password != ''">
+            password = #{password},
+        </if>
+        <if test="email != null and email != ''">
+            email = #{email},
+        </if>
+        <if test="tel != null and tel != ''">
+            tel = #{tel},
+        </if>
+        <if test="invitation != null and invitation != ''">
+            invitation = #{invitation},
+        </if>
+            id = #{id}
+        <where>
+            id = #{id}
+        </where>
+    </update>
+</mapper>
